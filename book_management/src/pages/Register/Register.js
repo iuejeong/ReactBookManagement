@@ -99,6 +99,7 @@ const Register = () => {
         .catch(error => {
             console.log("에러");
             console.log(error.response.data.errorData);
+            console.log("test");
         });
         console.log("비동기 테스트");
     }
