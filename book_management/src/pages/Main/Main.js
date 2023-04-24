@@ -1,9 +1,11 @@
 import React from 'react';
+import Sidebar from '../../components/Sidebar/Sidebar';
+import ListButton from '../../components/Sidebar/ListButton/ListButton';
 
 const Main = () => {
     return (
         <div>
-            <h1>메인페이지</h1>
+            <Sidebar></Sidebar>
         </div>
     );
 };

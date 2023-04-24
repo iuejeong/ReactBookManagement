@@ -7,7 +7,7 @@ import { Link, useNavigate } from 'react-router-dom';    // router 안에서 이
 import { BsGoogle } from 'react-icons/bs';
 import { SiNaver, SiKakao } from 'react-icons/si';
 import axios from 'axios';
-import { authenticated } from '../../index';
+import { authenticatedState } from '../../atoms/Auth/AuthAtoms';
 import { useRecoilState } from 'recoil';
 
 const container = css`
@@ -117,7 +117,8 @@ const Login = () => {
 
     const [ loginUser, setLoginUser] = useState({email: "", password: ""});
     const [errorMessages, setErrorMessages] = useState({email: "", password: "", name: ""});
-    const [ auth, setAuth ] = useRecoilState(authenticated); // auth가 authenticated에 저장됨. 전역으로 관리가 됨.
+    const [ authenticated, setAuthenticated ] = useRecoilState(authenticatedState);
+
     const navigate = useNavigate();
 
     const handleChange = (e) => {
@@ -136,7 +137,7 @@ const Login = () => {
             setErrorMessages({email: "", password: ""});
             const accessToken = response.data.grantType + " " + response.data.accessToken;
             localStorage.setItem("accessToken", accessToken); 
-            setAuth(true);
+            setAuthenticated(true);
             navigate("/");
         } catch(error) {
             setErrorMessages({email: "", password: "", ...error.response.data.errorData});
