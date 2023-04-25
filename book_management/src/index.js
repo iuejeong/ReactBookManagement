@@ -11,7 +11,7 @@ const queryClient = new QueryClient();    // 비동기 처리할 때, Recoil은 
 
 const root = ReactDOM.createRoot(document.getElementById('root'));
 root.render(
-  <React.StrictMode>
+  // <React.StrictMode>
     <RecoilRoot>
       <QueryClientProvider client={queryClient}>
         <BrowserRouter>
@@ -19,7 +19,7 @@ root.render(
         </BrowserRouter>
       </QueryClientProvider>
     </RecoilRoot>
-  </React.StrictMode>
+  // </React.StrictMode>
 );
 
 // If you want to start measuring performance in your app, pass a function
