@@ -126,7 +126,7 @@ const Login = () => {
         setLoginUser({ ...loginUser, [name]: value })
     }
 
-    const loginHandleSubmit = async() => {
+    const loginHandleSubmit = async() => {      // async = new promise(() => {})
         const option = {
             headers: {
                 "Content-Type": "application/json"
