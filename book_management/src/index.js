@@ -7,7 +7,7 @@ import { BrowserRouter } from 'react-router-dom';
 import { RecoilRoot } from 'recoil';
 import { QueryClient, QueryClientProvider } from 'react-query';
 
-const queryClient = new QueryClient();    // 비동기 처리할 때, Recoil은 동기 처리할 때 많이 쓰임.
+const queryClient = new QueryClient();    // 비동기 처리할 때. Recoil은 동기 처리할 때 많이 쓰임.
 
 const root = ReactDOM.createRoot(document.getElementById('root'));
 root.render(
