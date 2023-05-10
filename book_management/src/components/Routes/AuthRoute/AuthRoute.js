@@ -12,17 +12,15 @@ const validateToken = async (accessToken) => {       // async를 달면 return�
 }
 
 const AuthRoute = ({ path, element }) => {
-    const accessToken = localStorage.getItem("accessToken");
     const [ authenticated, setAuthenticated ] = useRecoilState(authenticatedState);
     // accessToken가 get요청으로 간다. 그 후에 data에 들어감
-    const { data, isLoading, error } = useQuery(() => getAuthenticated(accessToken));       // 훅이라서 위에 써줘야 함. 비동기 처리로 갔다가 옴
     setAuthenticated(data);
     // 인증이 됐는지 확인.  true = 로그인 성공, false = 로그인 실패. 새로고침하면 해당 recoil이 재렌더링으로 초기화가 되기 때문에 authenticated가 초기 값인 false로 된다. 
     const permitAll = ["/login", "/register", "/password/forgot"];
-
+    
     // 로그인 이후 렌더링 상태(재렌더링을 하지 않으면 실행이 안 되는 부분)
     if(!authenticated) {
-
+        const accessToken = localStorage.getItem("accessToken");
         if(accessToken !== null) {
             validateToken(accessToken).then((flag) => {     // 서버에서 localstorage에 있는 토큰이 유효한지 확인
                 setAuthenticated(flag);     // token이 true이고, authenticatedState를 true로 걸어줌으로써 로그인이 유지가 된다.

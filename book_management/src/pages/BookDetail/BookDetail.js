@@ -12,9 +12,9 @@ const mainContainer = css`
 `;
 // 콜백: 비동기 처리 후에 함수 실행을 해야하는 함수
 const BookDetail = () => {
-    const queryClient = useQueryClient();
-    console.log(queryClient);
     const { bookId } = useParams();
+    const queryClient = useQueryClient();
+
     const getBook = useQuery(["getBook"], async () => {
         const option = {
             headers : {

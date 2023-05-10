@@ -53,16 +53,7 @@ const BookRegister = () => {
         }
     });
 
-    const registeBookList = useMutation(async (bookId) => {
-        const option = {
-            headers: {
-                "Content-Type": "application/json",
-                Authorization: localStorage.getItem("accessToken")
-            }
-        }
-
-        return await axios.post("http://localhost:8080/admin/book/list", JSON.stringify({bookId}), option)
-    })
+    const registeBookList = useMutation()
 
     const searchInputHandle = (e) => {
         setSearchParams({...searchParams, searchValue: e.target.value});
@@ -197,7 +188,7 @@ const BookRegister = () => {
                 <label for="">이미지 경로</label>
                 <input type="text" value={findBook.coverImgUrl} readOnly />
             </div>
-            <button onClick={() => {registeBookList.mutate(findBook.bookId)}}>등록</button>
+            <button>등록</button>
         </div>
     );
 };

@@ -141,7 +141,7 @@ const Main = () => {
     const categoryClickHandle = (e) => {
         e.stopPropagation();
         if (isOpen && (e.target === categoryButtonRef.current)) {
-            setIsOpen(!isOpen);
+            setIsOpen(false);
         } else {
             setIsOpen(true);
         }

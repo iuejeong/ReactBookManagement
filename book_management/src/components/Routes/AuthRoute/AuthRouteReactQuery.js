@@ -21,7 +21,7 @@ const AuthRouteReactQuery = ({ path, element }) => {
         const response = await axios.get("http://localhost:8080/auth/principal", {params: {accessToken}})
         return response;
         },{
-            enabled: data.data    // 값이 true일 때만 data에 넣는다. !!는 not에 not
+            enabled: !!localStorage.getItem("accessToken")    // 값이 true일 때만 data에 넣는다. !!는 not에 not
     });
     
     useEffect(() => {
@@ -36,7 +36,7 @@ const AuthRouteReactQuery = ({ path, element }) => {
     }
 
     
-    if(principal !== undefined) {
+    if(principal.data !== undefined) {
         const roles = principal.data.data.authorities.split(",");
         // const hasAdminPath = path.substr(0, 6) === "/admin";        // path에서 0부터 6까지 잘랐을 때 /admin이 들어가있는지 확인
         if(path.startsWith("/admin") && !roles.includes("ROLE_ADMIN")) {
